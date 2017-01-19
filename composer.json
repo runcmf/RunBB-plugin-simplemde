@@ -1,5 +1,5 @@
 {
-  "name": "runcmf/RunBB-plugin-simplemde",
+  "name": "runcmf/runbb-plugin-simplemde",
   "description": "SimpleMDE Markdown editor for RunBB forum plugin",
   "license": "Apache-2.0",
   "type": "library",
