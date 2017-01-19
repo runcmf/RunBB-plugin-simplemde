@@ -169,7 +169,7 @@ class SimpleMDE extends Plugin
         
         ';
         // maybe where used
-        $data['jsRAW'] = isset($data['jsRAW']) ? $data['jsRAW'] . $emdJs : $emdJs;
+        $data['jsraw'] = isset($data['jsraw']) ? $data['jsraw'] . $emdJs : $emdJs;
 
         return $data;
     }
@@ -194,12 +194,12 @@ class SimpleMDE extends Plugin
             ['type' => 'text/javascript']
         );
         View::addAsset(
-            'jsTop',
+            'jshead',
             $this->c['forum_env']['WEB_PLUGINS'].'/'.self::NAME .'/jquery.mCustomScrollbar.min.js',
             ['type' => 'text/javascript']
         );
         View::addAsset(
-            'jsTop',
+            'jshead',
 //            $this->c['forum_env']['WEB_PLUGINS'].'/'.self::NAME .'/jquery.emoji.min.js',
             $this->c['forum_env']['WEB_PLUGINS'].'/'.self::NAME .'/jquery.emoji.js',
             ['type' => 'text/javascript']
