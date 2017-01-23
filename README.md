@@ -4,7 +4,7 @@
 ## Install
 1.
 ```php
-$ composer require runcmf/runbb-plugin-simplemde:dev-master
+$ composer require runcmf/runbb-ext-simplemde:dev-master
 ```
 
 2.  
@@ -39,7 +39,6 @@ If you discover any security related issues, please email to 1f7.wizard( at )gma
 ---
 ## Credits
 [SimpleMDE](https://github.com/NextStepWebs/simplemde-markdown-editor)  
-[jQuery-emoji](https://github.com/eshengsky/jQuery-emoji)  
 
 
 ---
