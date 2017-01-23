@@ -17,7 +17,6 @@
 
 namespace SimpleMDE;
 
-use RunBB\Core\Interfaces\User;
 use RunBB\Core\Plugin;
 use RunBB\Core\Utils;
 
@@ -74,7 +73,7 @@ class SimpleMDE extends Plugin
         $this->c['hooks']->bind('conversationsPlugin.send.display', [$this, 'addToolbar']);
         // Profile signature edit
         $this->c['hooks']->bind('controller.profile.display', [$this, 'addToolbar']);
-        // Post Report (need wysiwyg ????)
+        // Post Report
         $this->c['hooks']->bind('controller.post.report', [$this, 'addToolbar']);
     }
 
@@ -90,21 +89,14 @@ class SimpleMDE extends Plugin
         document.addEventListener("DOMContentLoaded", function(event) {
             var simplemde = new SimpleMDE({ 
                 element: $("#req_message")[0],
-                toolbar: [
-                    "bold", "italic", "strikethrough", "|",
-                    "heading", "|",
-                    "code", "quote", "unordered-list", "ordered-list", "clean-block", "|",
-                    "link", "image", "table", "horizontal-rule", "|",
-                    "preview", "side-by-side", "fullscreen", "|",
-                    "undo", "redo", "|",
-                    {// example own button and action
-                        name: "testBaton",
-                        action: getSmile,
-                        className: "fa fa-smile-o",
-                        id: "smilieBaton",
-                        title: "SmiliesBaton",
-                    }
-                ],
+//                toolbar: [
+//                    "bold", "italic", "strikethrough", "|", "heading", "|",
+//                    "code", "quote", "unordered-list", "ordered-list", "clean-block", "|",
+//                    "link", "image", "table", "horizontal-rule", "|",
+//                    "preview", "side-by-side", "fullscreen", "|", "undo", "redo"
+//                ],
+                showIcons: ["strikethrough", "code", "clean-block", "table", "horizontal-rule"],
+                hideIcons: ["guide", "fullscreen"],
                 renderingConfig: {
                     singleLineBreaks: false,
                     codeSyntaxHighlighting: true,
@@ -130,43 +122,7 @@ class SimpleMDE extends Plugin
                     }
                 }]
             });
-
-
-            function getSmile () {//req_message
-                $("#simplemde").emoji({
-                    button: "#smilieBaton",
-                    showTab: false,// show emoji groups
-                    animation: "slide",// "fade", "slide" or "none"
-                    icons: [{
-                        name: "Emoji", // Emoji name
-                        path: "/assets/img/smilies/",// path to the emoji icons
-                        maxNum: 2,
-                        file: ".png",// file extension name
-                        placeholder: ":{alias}:",
-                        excludeNums: [], // exclude emoji icons
-                        title: {}, // titles of emoji icons
-                        alias: {
-                            0: "smile",
-                            1: "mad",
-                            2: "lol"
-                        },
-                    }]
-                });
-            };
-
-
-            function drawTextFunction(editor) {
-                var cm = editor.codemirror;
-                var output = "";
-                var selectedText = cm.getSelection();
-                var text = selectedText || "placeholder";
-            
-                output = "!!!" + text + "!!!";
-                cm.replaceSelection(output);
-            }
         });
-       
-        
         ';
         // maybe where used
         $data['jsraw'] = isset($data['jsraw']) ? $data['jsraw'] . $emdJs : $emdJs;
@@ -183,25 +139,8 @@ class SimpleMDE extends Plugin
             ['type' => 'text/css', 'rel' => 'stylesheet']
         );
         View::addAsset(
-            'css',
-            $this->c['forum_env']['WEB_PLUGINS'].'/'.self::NAME . '/jquery.emoji.css',
-            ['type' => 'text/css', 'rel' => 'stylesheet']
-        );
-        View::addAsset(
             'js',
-//            $this->c['forum_env']['WEB_PLUGINS'].'/'.self::NAME .'/simplemde.min.js',
-            $this->c['forum_env']['WEB_PLUGINS'].'/'.self::NAME .'/simplemde.js',
-            ['type' => 'text/javascript']
-        );
-        View::addAsset(
-            'jshead',
-            $this->c['forum_env']['WEB_PLUGINS'].'/'.self::NAME .'/jquery.mCustomScrollbar.min.js',
-            ['type' => 'text/javascript']
-        );
-        View::addAsset(
-            'jshead',
-//            $this->c['forum_env']['WEB_PLUGINS'].'/'.self::NAME .'/jquery.emoji.min.js',
-            $this->c['forum_env']['WEB_PLUGINS'].'/'.self::NAME .'/jquery.emoji.js',
+            $this->c['forum_env']['WEB_PLUGINS'].'/'.self::NAME .'/simplemde.min.js',
             ['type' => 'text/javascript']
         );
 
@@ -210,10 +149,7 @@ class SimpleMDE extends Plugin
 
     public function install()
     {
-//        $to = $this->c['forum_env']['WEB_ROOT'] . $this->c['forum_env']['WEB_PLUGINS'].'/'.self::NAME;
-//        $from = __DIR__ . '/assets';
         Utils::recurseCopy(
-//            $from, $to
             __DIR__ . '/assets',
             $this->c['forum_env']['WEB_ROOT'] . $this->c['forum_env']['WEB_PLUGINS'].'/'.self::NAME
         );

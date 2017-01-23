@@ -1,5 +1,5 @@
 {
-  "name": "runcmf/runbb-plugin-simplemde",
+  "name": "runcmf/runbb-ext-simplemde",
   "description": "SimpleMDE Markdown editor for RunBB forum plugin",
   "license": "Apache-2.0",
   "type": "library",
@@ -8,9 +8,8 @@
     "RunBB",
     "Slim3",
     "Slim 3",
-    "Tracy",
-    "Idiorm",
-    "plugin"
+    "simplemde",
+   "plugin"
   ],
   "authors": [
     {

@@ -7,14 +7,16 @@
 $ composer require runcmf/runbb-plugin-simplemde:dev-master
 ```
 
-2. add to setting.php into `pugins` section `'simplemde' => 'SimpleMDE\SimpleMDE'`  
+2.  
+add to setting.php into `plugins` section `'simplemde' => 'SimpleMDE\SimpleMDE'`  
   like:
 ```php
-        'plugins' => [// register plugins as NameSpace\InitInfoClass
-                'simplemde' => 'SimpleMDE\SimpleMDE'
-            ],
+    'plugins' => [// register plugins as NameSpace\InitInfoClass
+            'simplemde' => 'SimpleMDE\SimpleMDE'
+        ],
 ```
-3. go to Administration -> Plugins -> SimpleMDE Toolbar -> Activate  
+3.  
+go to Administration -> Plugins -> SimpleMDE Toolbar -> Activate  
 
 
 ## Recommendations
