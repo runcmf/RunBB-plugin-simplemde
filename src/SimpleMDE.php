@@ -24,8 +24,8 @@ class SimpleMDE extends Plugin
 {
     const NAME = 'simplemde';// config key name
     const TITLE = 'SimpleMDE Toolbar';
-    const DESCRIPTION = 'Add a <a href="https://github.com/NextStepWebs/simplemde-markdown-editor">SimpleMDE</a>'.
-    ' toolbar to markdown format text in your posts.';
+    const DESCRIPTION = '<a href="https://github.com/NextStepWebs/simplemde-markdown-editor">SimpleMDE</a>'.
+    ' markdown editor panel.';
     const VERSION = '0.1.0';
     const KEYWORDS = [
         'runbb',
@@ -150,7 +150,7 @@ class SimpleMDE extends Plugin
     public function install()
     {
         Utils::recurseCopy(
-            __DIR__ . '/assets',
+            realpath(__DIR__ . '/../assets'),
             $this->c['forum_env']['WEB_ROOT'] . $this->c['forum_env']['WEB_PLUGINS'].'/'.self::NAME
         );
     }
