@@ -62,8 +62,6 @@ class SimpleMDE extends Plugin
     {
         Statical::addNamespace('*', __NAMESPACE__.'\\*');
 
-        // Add language files into javascript footer block
-        $this->c['hooks']->bind('view.alter_data', [$this, 'addJs']);
         // Support default actions
         $this->c['hooks']->bind('controller.post.create', [$this, 'addToolbar']);
         $this->c['hooks']->bind('controller.post.edit', [$this, 'addToolbar']);
@@ -132,6 +130,9 @@ class SimpleMDE extends Plugin
 
     public function addToolbar()
     {
+        // Add language files into javascript footer block
+        $this->c['hooks']->bind('view.alter_data', [$this, 'addJs']);
+
         //$args = func_get_args();
         View::addAsset(
             'css',
