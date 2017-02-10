@@ -158,8 +158,9 @@ class SimpleMDE extends Plugin
 
     public function remove()
     {
-        // TODO
-        //Utils::recurseDelete($dir);
+        Utils::recurseDelete(
+            $this->c['forum_env']['WEB_ROOT'] . $this->c['forum_env']['WEB_PLUGINS'].'/'.self::NAME
+        );
     }
 
     public function update()

@@ -3,22 +3,16 @@
 
 ## Install
 1.
-```php
-$ composer require runcmf/runbb-ext-simplemde:dev-master
-```
+go to Administration -> Plugins -> repo -> find `SimpleMDE markdown editor for RunBB forum plugin` -> click `install`    
 
-2.  
-add to setting.php into `plugins` section `'simplemde' => 'SimpleMDE\SimpleMDE'`  
-  like:
-```php
-    'plugins' => [// register plugins as NameSpace\InitInfoClass
-            'simplemde' => 'SimpleMDE\SimpleMDE'
-        ],
-```
-3.  
-go to Administration -> Plugins -> SimpleMDE Toolbar -> Activate  
+in modal window click button with `require runcmf/runbb-ext-simplemde`  
 
+2.   
+after close modal, page refreshed and you see `SimpleMDE markdown editor for RunBB forum plugin` **installed**  
 
+go to Administration -> Plugins -> `SimpleMDE Toolbar` -> `Activate`
+
+---  
 ## Recommendations
 
 * TODO
